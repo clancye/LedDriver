@@ -52,3 +52,19 @@ TEST_F(ledDriverTest, TurnOnAllLeds)
 	LedDriver_TurnOnAllLeds();
 	ASSERT_EQ(0xffff, virtualLeds);
 }
+
+TEST_F(ledDriverTest, UpperAndLowerBounds)
+{
+	LedDriver_TurnOn(1);
+	LedDriver_TurnOn(16);
+	ASSERT_EQ(0x8001, virtualLeds);
+}
+
+TEST_F(ledDriverTest, OutOfBoundsChangesNothing)
+{
+	LedDriver_TurnOn(-1);
+	LedDriver_TurnOn(0);
+	LedDriver_TurnOn(17);
+	LedDriver_TurnOn(3352);
+	ASSERT_EQ(0,virtualLeds);
+}
