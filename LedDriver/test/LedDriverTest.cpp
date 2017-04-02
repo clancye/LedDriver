@@ -45,3 +45,10 @@ TEST_F(ledDriverTest, TurnOffMultipleLeds)
 	LedDriver_TurnOff(2);
 	ASSERT_EQ(0x777D, virtualLeds);
 }	
+
+TEST_F(ledDriverTest, TurnOnAllLeds)
+{
+	virtualLeds = 0;
+	LedDriver_TurnOnAllLeds();
+	ASSERT_EQ(0xffff, virtualLeds);
+}

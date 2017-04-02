@@ -22,3 +22,8 @@ void LedDriver_TurnOff(int ledToTurnOff)
 {
 	*ledsAddress ^= (1 << (ledToTurnOff -1));
 }
+
+void LedDriver_TurnOnAllLeds()
+{
+	*ledsAddress = 0xffff;
+}
