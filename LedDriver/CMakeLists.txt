@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.6.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
 
 project("LedDriver")
 
@@ -32,7 +32,9 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
   include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
+include_directories(".")
 
 add_executable(tests test/main.cpp
-			test/LedDriverTest.cpp)
+			test/LedDriverTest.cpp
+			LedDriver.cpp)
 target_link_libraries(tests gtest_main)
